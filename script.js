@@ -35,7 +35,20 @@ function rot13(encodedStr) {
   let decodedArr = []; // Your Result goes here
   // Only change code below this line
 
-  return; //return decodedArr
+	let sb = "";
+  for (let i = 0; i < str.length; i++) {
+    let ch = str[i];
+    if (ch.match(/[A-Z]/)) {
+      let dch = ch.charCodeAt(0) - 13;
+      let dc = String.fromCharCode(dch);
+      sb += dc;
+    } else {
+      sb += ch;
+    }
+  }
+  return sb;
+
+ // return; //return decodedArr
 }
 
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line

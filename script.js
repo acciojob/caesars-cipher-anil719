@@ -32,23 +32,32 @@ const lookup = {
 };
 
 function rot13(encodedStr) {
-  let decodedArr = []; // Your Result goes here
-  // Only change code below this line
+ javascript
+Copy code
+function rot13(str) {
+  // Define an empty string to store the encrypted result
+  var result = "";
 
-	let sb = "";
-  for (let i = 0; i < str.length; i++) {
-    let ch = str[i];
-    if (ch.match(/[A-Z]/)) {
-      let dch = ch.charCodeAt(0) - 13;
-      let dc = String.fromCharCode(dch);
-      sb += dc;
+  // Loop through each character in the input string
+  for (var i = 0; i < str.length; i++) {
+    // Get the ASCII code of the current character
+    var charCode = str.charCodeAt(i);
+
+    // Check if the character is an uppercase letter
+    if (charCode >= 65 && charCode <= 90) {
+      // Apply the ROT13 transformation
+      var encryptedCharCode = ((charCode - 65 + 13) % 26) + 65;
+
+      // Convert the encrypted ASCII code back to a character and append it to the result
+      result += String.fromCharCode(encryptedCharCode);
     } else {
-      sb += ch;
+      // For non-alphabetic characters, pass them on without any transformation
+      result += str.charAt(i);
     }
   }
-  return sb;
 
- // return; //return decodedArr
+  // Return the encrypted result
+  return result;
 }
 
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
